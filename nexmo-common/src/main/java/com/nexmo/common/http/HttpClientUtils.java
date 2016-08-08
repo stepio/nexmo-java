@@ -1,6 +1,6 @@
-package com.nexmo.common.http;
-/*
- * Copyright (c) 2011-2013 Nexmo Inc
+/**
+ * The MIT License
+ * Copyright (c) 2011 - 2016, Nexmo Inc
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,18 +20,18 @@ package com.nexmo.common.http;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package com.nexmo.common.http;
 
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.config.ConnectionConfig;
+import org.apache.http.config.SocketConfig;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.params.HttpProtocolParams;
-
 /**
  * HttpClientUtils.java<br><br>
  *
@@ -46,18 +46,45 @@ public class HttpClientUtils {
 
     private final static Map<String, HttpClientUtils> instances = new HashMap<>();
 
-    private final ThreadSafeClientConnManager threadSafeClientConnManager;
+    private final SocketConfig socketConfig;
+    private final ConnectionConfig connectionConfig;
+    private final RequestConfig requestConfig;
+    private final PoolingHttpClientConnectionManager connectionManager;
+    private final CloseableHttpClient httpclient;
 
     private final int connectionTimeout;
     private final int soTimeout;
+    private final String appVersion;
 
     private HttpClientUtils(int connectionTimeout, int soTimeout) {
         this.connectionTimeout = connectionTimeout;
         this.soTimeout = soTimeout;
+        this.appVersion = "1.7.0";
 
-        this.threadSafeClientConnManager = new ThreadSafeClientConnManager();
-        this.threadSafeClientConnManager.setDefaultMaxPerRoute(200);
-        this.threadSafeClientConnManager.setMaxTotal(200);
+        this.socketConfig = SocketConfig.custom()
+                .setTcpNoDelay(true)
+                .build();
+        this.connectionConfig = ConnectionConfig.custom()
+                .setCharset(Charset.forName("UTF-8"))
+                .build();
+        this.requestConfig = RequestConfig.custom()
+                .setSocketTimeout(this.soTimeout)
+                .setConnectTimeout(this.connectionTimeout)
+                .setConnectionRequestTimeout(this.soTimeout)
+                .build();
+        this.connectionManager = new PoolingHttpClientConnectionManager();
+        this.connectionManager.setDefaultMaxPerRoute(200);
+        this.connectionManager.setMaxTotal(200);
+        this.connectionManager.setValidateAfterInactivity(this.connectionTimeout);
+
+        this.httpclient = HttpClients.custom()
+                .useSystemProperties()
+                .setUserAgent("Nexmo Java SDK " + appVersion)
+                .setDefaultSocketConfig(this.socketConfig)
+                .setDefaultConnectionConfig(this.connectionConfig)
+                .setDefaultRequestConfig(this.requestConfig)
+                .setConnectionManager(this.connectionManager)
+                .build();
     }
 
     /**
@@ -69,13 +96,7 @@ public class HttpClientUtils {
      * @return HttpClientUtils an instance of the HttpClient factory primed with the requested timeout values
      */
     public static HttpClientUtils getInstance(int connectionTimeout, int soTimeout) {
-        String key = "c-" + connectionTimeout + "-so-" + soTimeout;
-        HttpClientUtils instance = instances.get(key);
-        if (instance == null) {
-            instance = new HttpClientUtils(connectionTimeout, soTimeout);
-            instances.put(key, instance);
-        }
-        return instance;
+        return new HttpClientUtils(connectionTimeout, soTimeout);
     }
 
     /**
@@ -83,17 +104,7 @@ public class HttpClientUtils {
      *
      * @return HttpClient a new HttpClient instance
      */
-    public HttpClient getNewHttpClient() {
-        HttpParams httpClientParams = new BasicHttpParams();
-        HttpProtocolParams.setUserAgent(httpClientParams, "Nexmo Java SDK 1.5");
-        HttpProtocolParams.setContentCharset(httpClientParams, "UTF-8");
-        HttpProtocolParams.setHttpElementCharset(httpClientParams, "UTF-8");
-        HttpConnectionParams.setConnectionTimeout(httpClientParams, this.connectionTimeout);
-        HttpConnectionParams.setSoTimeout(httpClientParams, this.soTimeout);
-        HttpConnectionParams.setStaleCheckingEnabled(httpClientParams, true);
-        HttpConnectionParams.setTcpNoDelay(httpClientParams, true);
-
-        return new DefaultHttpClient(this.threadSafeClientConnManager, httpClientParams);
+    public CloseableHttpClient getNewHttpClient() {
+        return this.httpclient;
     }
-
 }

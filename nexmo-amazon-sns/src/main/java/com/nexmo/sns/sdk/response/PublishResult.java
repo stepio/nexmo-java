@@ -1,6 +1,6 @@
-package com.nexmo.sns.sdk.response;
-/*
- * Copyright (c) 2011-2013 Nexmo Inc
+/**
+ * The MIT License
+ * Copyright (c) 2011 - 2016, Nexmo Inc
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,7 @@ package com.nexmo.sns.sdk.response;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package com.nexmo.sns.sdk.response;
 
 /**
  * PublishResult.java<br><br>
@@ -33,9 +34,8 @@ package com.nexmo.sns.sdk.response;
  */
 public interface PublishResult {
 
-    public String getCommand();
-    public int getResultCode();
-    public String getResultMessage();
-    public String getTransactionId();
-
+    String getCommand();
+    int getResultCode();
+    String getResultMessage();
+    String getTransactionId();
 }

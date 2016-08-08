@@ -1,6 +1,6 @@
-package com.nexmo.messaging.sdk.examples.signed;
-/*
- * Copyright (c) 2011-2013 Nexmo Inc
+/**
+ * The MIT License
+ * Copyright (c) 2011 - 2016, Nexmo Inc
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,25 +20,23 @@ package com.nexmo.messaging.sdk.examples.signed;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package com.nexmo.messaging.sdk.examples;
 
 import com.nexmo.messaging.sdk.NexmoSmsClient;
-import com.nexmo.messaging.sdk.NexmoSmsClientSignedRequests;
 import com.nexmo.messaging.sdk.SmsSubmissionResult;
 import com.nexmo.messaging.sdk.messages.TextMessage;
 
 /**
- * SendSignedTextMessage.java<br><br>
+ * SendTextMessage.java<br><br>
  *
  * An example of using the nexmo sms api to submit a simple text message ...<br><br>
- * This example uses a {@link com.nexmo.messaging.sdk.NexmoSmsClientSignedRequests} client
- * So that the REST requests are signed using the secret key.
  *
- * Created on 10 April 2012, 17:34
+ * Created on 5 January 2011, 17:34
  *
  * @author  Paul Cook
  * @version 1.0
  */
-public class SendSignedTextMessage {
+public class SendTextMessage {
 
     public static final String API_KEY = "your-api-key-goes-here";
     public static final String API_SECRET = "your-api-secret-goes-here";
@@ -53,7 +51,7 @@ public class SendSignedTextMessage {
 
         NexmoSmsClient client = null;
         try {
-            client = new NexmoSmsClientSignedRequests(API_KEY, API_SECRET);
+            client = new NexmoSmsClient(API_KEY, API_SECRET);
         } catch (Exception e) {
             System.err.println("Failed to instanciate a Nexmo Client");
             e.printStackTrace();

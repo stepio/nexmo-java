@@ -1,6 +1,6 @@
-package com.nexmo.security;
-/*
- * Copyright (c) 2011-2013 Nexmo Inc
+/**
+ * The MIT License
+ * Copyright (c) 2011 - 2016, Nexmo Inc
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,6 +20,7 @@ package com.nexmo.security;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package com.nexmo.security;
 
 /**
  * @author  Paul Cook
@@ -27,9 +28,8 @@ package com.nexmo.security;
  */
 public interface SecurityConstants {
 
-    public static final int MAX_ALLOWABLE_TIME_DELTA = 5 * 60 * 1000;
+    int MAX_ALLOWABLE_TIME_DELTA = 5 * 60 * 1000;
 
-    public static final String PARAM_SIGNATURE = "sig";
-    public static final String PARAM_TIMESTAMP = "timestamp";
-
+    String PARAM_SIGNATURE = "sig";
+    String PARAM_TIMESTAMP = "timestamp";
 }

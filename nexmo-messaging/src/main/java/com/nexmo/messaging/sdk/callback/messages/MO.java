@@ -1,10 +1,6 @@
-package com.nexmo.messaging.sdk.callback.messages;
-
-import java.math.BigDecimal;
-import java.util.Date;
-
-/*
- * Copyright (c) 2011-2013 Nexmo Inc
+/**
+ * The MIT License
+ * Copyright (c) 2011 - 2016, Nexmo Inc
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +20,11 @@ import java.util.Date;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package com.nexmo.messaging.sdk.callback.messages;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
 
 /**
  * MO.java
@@ -182,7 +183,7 @@ public class MO implements java.io.Serializable {
     }
 
     /**
-     * @return byte[] the raw binary user-data-header if applicable for this message
+     * @return byte[] the raw binary user-data-header.ftl if applicable for this message
      */
     public byte[] getUserDataHeader() {
         return this.userDataHeader;

@@ -1,6 +1,6 @@
-package com.nexmo.messaging.sdk.examples;
-/*
- * Copyright (c) 2011-2013 Nexmo Inc
+/**
+ * The MIT License
+ * Copyright (c) 2011 - 2016, Nexmo Inc
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,30 +20,33 @@ package com.nexmo.messaging.sdk.examples;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package com.nexmo.messaging.sdk.examples.signed;
 
 import com.nexmo.messaging.sdk.NexmoSmsClient;
+import com.nexmo.messaging.sdk.NexmoSmsClientSignedRequests;
 import com.nexmo.messaging.sdk.SmsSubmissionResult;
-import com.nexmo.messaging.sdk.messages.WapPushMessage;
+import com.nexmo.messaging.sdk.messages.TextMessage;
 
 /**
- * SendWapPush.java<br><br>
+ * SendSignedTextMessage.java<br><br>
  *
- * An example of using the nexmo sms api to submit a wap push message ...<br><br>
+ * An example of using the nexmo sms api to submit a simple text message ...<br><br>
+ * This example uses a {@link com.nexmo.messaging.sdk.NexmoSmsClientSignedRequests} client
+ * So that the REST requests are signed using the secret key.
  *
- * Created on 5 January 2011, 17:34
+ * Created on 10 April 2012, 17:34
  *
  * @author  Paul Cook
  * @version 1.0
  */
-public class SendWapPush {
+public class SendSignedTextMessage {
 
     public static final String API_KEY = "your-api-key-goes-here";
     public static final String API_SECRET = "your-api-secret-goes-here";
 
-    public static final String WAP_PUSH_FROM = "12345";
-    public static final String WAP_PUSH_TO = "447777111222";
-    public static final String WAP_PUSH_URL = "http://www.nexmo.com";
-    public static final String WAP_PUSH_TITLE = "Nexmo";
+    public static final String SMS_FROM = "12345";
+    public static final String SMS_TO = "447777111222";
+    public static final String SMS_TEXT = "Hello World!";
 
     public static void main(String[] args) {
 
@@ -51,18 +54,18 @@ public class SendWapPush {
 
         NexmoSmsClient client = null;
         try {
-            client = new NexmoSmsClient(API_KEY, API_SECRET);
+            client = new NexmoSmsClientSignedRequests(API_KEY, API_SECRET);
         } catch (Exception e) {
             System.err.println("Failed to instanciate a Nexmo Client");
             e.printStackTrace();
             throw new RuntimeException("Failed to instanciate a Nexmo Client");
         }
 
-        // Create a Wap-Push Message request object ...
+        // Create a Text SMS Message request object ...
 
-        WapPushMessage message = new WapPushMessage(WAP_PUSH_FROM, WAP_PUSH_TO, WAP_PUSH_URL, WAP_PUSH_TITLE);
+        TextMessage message = new TextMessage(SMS_FROM, SMS_TO, SMS_TEXT);
 
-        // Use the Nexmo client to submit the Wap Push Message ...
+        // Use the Nexmo client to submit the Text Message ...
 
         SmsSubmissionResult[] results = null;
         try {

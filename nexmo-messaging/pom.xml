@@ -19,5 +19,4 @@
             <artifactId>nexmo-common</artifactId>
         </dependency>
     </dependencies>
-
 </project>
