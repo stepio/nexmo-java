@@ -53,9 +53,9 @@ public class SendTextMessage {
         try {
             client = new NexmoSmsClient(API_KEY, API_SECRET);
         } catch (Exception e) {
-            System.err.println("Failed to instanciate a Nexmo Client");
+            System.err.println("Failed to instantiate a Nexmo Client");
             e.printStackTrace();
-            throw new RuntimeException("Failed to instanciate a Nexmo Client");
+            throw new RuntimeException("Failed to instantiate a Nexmo Client");
         }
 
         // Create a Text SMS Message request object ...

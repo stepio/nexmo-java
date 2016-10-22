@@ -52,7 +52,7 @@ public class SmsSubmissionReachabilityStatus implements java.io.Serializable {
     public static final int REACHABILITY_STATUS_UNDELIVERABLE = 2;
 
     /**
-     * The destinationof this message is temporarily unavailable (eg, switched off)
+     * The destination of this message is temporarily unavailable (eg, switched off)
      */
     public static final int REACHABILITY_STATUS_ABSENT = 3;
 

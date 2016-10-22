@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * HttpClientUtils.java<br><br>
  *
- * A Helper factory for instanciating HttpClient instances<br><br>
+ * A Helper factory for instantiating HttpClient instances<br><br>
  *
  * Created on 5 January 2011, 17:34
  *
@@ -88,7 +88,7 @@ public class HttpClientUtils {
     }
 
     /**
-     * Return an existing or instanciate a new HttpClient factory instance with explicitely specified connection and read timeout values
+     * Return an existing or instantiate a new HttpClient factory instance with explicitly specified connection and read timeout values
      *
      * @param connectionTimeout the timeout value in milliseconds to use when establishing a new http socket
      * @param soTimeout the timeout value in milliseconds to wait for a http response before closing the socket
@@ -100,7 +100,7 @@ public class HttpClientUtils {
     }
 
     /**
-     * Instanciate a new HttpClient instance that uses the timeout values associated with this factory instance
+     * Instantiate a new HttpClient instance that uses the timeout values associated with this factory instance
      *
      * @return HttpClient a new HttpClient instance
      */

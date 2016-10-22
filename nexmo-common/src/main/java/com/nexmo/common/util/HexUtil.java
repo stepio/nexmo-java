@@ -54,7 +54,7 @@ public class HexUtil {
      * Each octet will be separated with a specific separator.
      *
      * @param bytes raw binary data
-     * @param separator This string will be injected into the output inbetween each octet in the stream
+     * @param separator This string will be injected into the output in between each octet in the stream
      *
      * @return String Hex representation of the raw data with each octet separated by 'separator'
      */

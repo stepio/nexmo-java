@@ -32,7 +32,7 @@ import java.util.Map;
  * Created on 5 January 2011, 17:34<br><br>
  *
  * Represents the details of a service request that is to be submitted via the http api.<br>
- * Not instanciated directly, but instead via one of the sub-classes that represent a particular service command
+ * Not instantiated directly, but instead via one of the sub-classes that represent a particular service command
  *
  * @author  Paul Cook
  * @version 1.0

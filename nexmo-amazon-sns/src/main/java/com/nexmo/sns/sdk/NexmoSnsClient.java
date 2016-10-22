@@ -68,12 +68,12 @@ public class NexmoSnsClient {
     public static final String DEFAULT_BASE_URL = "https://sns.nexmo.com/sns/xml";
 
     /**
-     * Default connection timeout of 5000ms used by this client unless specifically overridden onb the constructor
+     * Default connection timeout of 5000ms used by this client unless specifically overridden on the constructor
      */
     public static final int DEFAULT_CONNECTION_TIMEOUT = 5000;
 
     /**
-     * Default read timeout of 30000ms used by this client unless specifically overridden onb the constructor
+     * Default read timeout of 30000ms used by this client unless specifically overridden on the constructor
      */
     public static final int DEFAULT_SO_TIMEOUT = 30000;
 
@@ -90,7 +90,7 @@ public class NexmoSnsClient {
     private HttpClient httpClient = null;
 
     /**
-     * Instanciate a new NexmoSnsClient instance that will communicate using the supplied credentials.
+     * Instantiate a new NexmoSnsClient instance that will communicate using the supplied credentials.
      *
      * @param apiKey Your Nexmo account api key
      * @param apiSecret Your Nexmo account api secret
@@ -105,7 +105,7 @@ public class NexmoSnsClient {
     }
 
     /**
-     * Instanciate a new NexmoSnsClient instance that will communicate using the supplied credentials, and will use the supplied connection and read timeout values.
+     * Instantiate a new NexmoSnsClient instance that will communicate using the supplied credentials, and will use the supplied connection and read timeout values.
      *
      * @param apiKey Your Nexmo account api key
      * @param apiSecret Your Nexmo account api secret
@@ -124,7 +124,7 @@ public class NexmoSnsClient {
     }
 
     /**
-     * Instanciate a new NexmoSnsClient instance that will communicate using the supplied credentials, and will use the supplied connection and read timeout values.<br>
+     * Instantiate a new NexmoSnsClient instance that will communicate using the supplied credentials, and will use the supplied connection and read timeout values.<br>
      * Additionally, you can specify an alternative service base url. For example submitting to a testing sandbox environment,
      * or if requested to submit to an alternative address by Nexmo, for example, in cases where it may be necessary to prioritize your traffic.
      *
@@ -139,7 +139,6 @@ public class NexmoSnsClient {
                           final int connectionTimeout,
                           final int soTimeout) throws Exception {
 
-        // Derive a http and a https version of the supplied base url
         if (baseUrl == null)
             throw new IllegalArgumentException("base url is null");
         String url = baseUrl.trim();
@@ -177,7 +176,7 @@ public class NexmoSnsClient {
 
         //String baseUrl = https ? this.baseUrlHttps : this.baseUrlHttp;
 
-        // Now that we have generated a query string, we can instanciate a HttpClient,
+        // Now that we have generated a query string, we can instantiate a HttpClient,
         // construct a POST or GET method and execute to submit the request
         String response = null;
         HttpPost method = new HttpPost(this.baseUrl);

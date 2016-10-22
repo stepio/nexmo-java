@@ -114,7 +114,7 @@ public abstract class BaseResult implements java.io.Serializable {
     public static final int STATUS_NO_RESPONSE = 101;
 
     /**
-     * A network error occured
+     * A network error occurred
      */
     public static final int STATUS_COMMS_FAILURE = -1;
 

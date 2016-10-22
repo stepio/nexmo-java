@@ -245,7 +245,7 @@ public abstract class AbstractMOServlet extends HttpServlet {
 
     /**
      * This is the task that is pushed to the thread pool upon receipt of an incoming MO callback
-     * It detatches the consumption of the MO from the acknowledgement of the incoming http request
+     * It detaches the consumption of the MO from the acknowledgement of the incoming http request
      */
     private static final class ConsumeTask implements Runnable, java.io.Serializable {
 
@@ -267,7 +267,7 @@ public abstract class AbstractMOServlet extends HttpServlet {
     }
 
     /**
-     * This method is asynchronosly passed a complete MO instance to be dealt with by your application logic
+     * This method is asynchronously passed a complete MO instance to be dealt with by your application logic
      *
      * @param mo
      */

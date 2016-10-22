@@ -39,7 +39,7 @@ public class BinaryMessage extends Message {
     static final long serialVersionUID = -5301775803396025570L;
 
     /**
-     * Instanciate a new binary sms message request.
+     * Instantiate a new binary sms message request.
      *
      * @param from the 'from' address that will be seen on the handset when this message arrives,
      *             typically either a valid short-code / long code that can be replied to, or a short text description of the application sending the message (Max 11 chars)
@@ -51,7 +51,7 @@ public class BinaryMessage extends Message {
      *                         (for example, a binary ringtone, a wap-push, OverTheAir configuration, etc).
      *                         Additionally, if you are sending a long text message as multiple concatenated messages and are performing this operation manually rather than
      *                         using the automated long messaging handling in the Nexmo messaging service, then you will need to construct and include here an appropriate
-     *                         UserDataHeader field that describes the segmentation/re-assembly fields required to sucessfully concatenate multiple short messages.
+     *                         UserDataHeader field that describes the segmentation/re-assembly fields required to successfully concatenate multiple short messages.
      */
     public BinaryMessage(final String from,
                          final String to,
@@ -74,7 +74,7 @@ public class BinaryMessage extends Message {
     }
 
     /**
-     * Instanciate a new binary sms message request, attaching an optional client reference, message-class or TTL, and optionally requesting a delivery notification.
+     * Instantiate a new binary sms message request, attaching an optional client reference, message-class or TTL, and optionally requesting a delivery notification.
      *
      * @param from the 'from' address that will be seen on the handset when this message arrives,
      *             typically either a valid short-code / long code that can be replied to, or a short text description of the application sending the message (Max 11 chars)
@@ -86,9 +86,9 @@ public class BinaryMessage extends Message {
      *                         (for example, a binary ringtone, a wap-push, OverTheAir configuration, etc).
      *                         Additionally, if you are sending a long text message as multiple concatenated messages and are performing this operation manually rather than
      *                         using the automated long messaging handling in the Nexmo messaging service, then you will need to construct and include here an appropriate
-     *                         UserDataHeader field that describes the segmentation/re-assembly fields required to sucessfully concatenate multiple short messages.
+     *                         UserDataHeader field that describes the segmentation/re-assembly fields required to successfully concatenate multiple short messages.
      * @param clientReference This is a user definable reference that will be stored in the Nexmo messaging records. It will be available in detailed reporting / analytics
-     *                        In order to help with reconcilliation of messages
+     *                        In order to help with reconciliation of messages
      * @param statusReportRequired If set to true, then a delivery notification will be requested for this message delivery attempt.
      *                             Upon receiving notification of delivery or failure from the network, the Nexmo platform will submit a notification to the url configured in your
      *                             Nexmo REST account that represents the outcome of this message.
